@@ -8,6 +8,7 @@ import { RequestTimeoutInterceptor } from '../common/http/request-timeout.interc
 import { DatabaseModule } from '../common/database/database.module';
 import { SorobanMetricsService } from './soroban-metrics.service';
 import { SorobanRpcMetricsInterceptor } from './soroban-rpc-metrics.interceptor';
+import { initTracing } from './tracing';
 import { TracingService } from './tracing.service';
 import { DatabaseQueryLoggerService } from './database-query-logger.service';
 
@@ -36,4 +37,8 @@ import { DatabaseQueryLoggerService } from './database-query-logger.service';
     DatabaseQueryLoggerService,
   ],
 })
-export class MonitoringModule {}
+export class MonitoringModule {
+  constructor() {
+    initTracing();
+  }
+}

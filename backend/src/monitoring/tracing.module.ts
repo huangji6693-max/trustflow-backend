@@ -1,12 +1,8 @@
-import { Module, Injectable, OnModuleDestroy } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { initTracing } from './tracing';
+import { TracingService } from './tracing.service';
 
-@Injectable()
-export class TracingService implements OnModuleDestroy {
-  onModuleDestroy(): void {
-    // Cleanup handled by signal handlers in tracing.ts
-  }
-}
+export { TracingService };
 
 @Module({
   providers: [TracingService],
